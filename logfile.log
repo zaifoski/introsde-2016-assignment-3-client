@@ -1,0 +1,105 @@
+
+https://chimirri-assignment-3-server.herokuapp.com:6907/ws/people?wsdl/
+
+
+-------------> At the beginning:
+
+Method #1: readPersonList() => List
+	 Parameters: none
+	 Response: 
+		1 Sofia
+		2 Marina
+Method #8: readPersonMeasure(int id, String measureType, int mid) => String 
+	 Parameters: 
+		 idPerson: 1
+		 measureType: weight
+		 idMeasure: 2
+	 Result: 
+		 75
+Method #7: readMeasureTypes() => List 
+	 Parameters: none
+	 Result: 
+		 170 height
+		 75 weight
+		 80 weight
+		 85 weight
+
+-------------> I update a measure:
+
+Method #10: updatePersonMeasure(Long id, Measure m) => Measure
+	 Parameters: 
+		 idPerson: 1
+		 measureId: 2
+	 Result: 
+		 OK, the value is changed for mid 2
+
+-------------> I save a new measure and read it:
+
+Method #9: savePersonMeasure(int id, Measure newMeasure) => Long 
+	 Parameters: 
+		 idPerson: 1
+		 newMeasure: introsde.assignment.soap.document.ws.Measure@4f2b503c
+	 Result: 
+		 New Measure Id: 217
+Method #8: readPersonMeasure(int id, String measureType, int mid) => String 
+	 Parameters: 
+		 idPerson: 1
+		 measureType: weight
+		 idMeasure: 217
+	 Result: 
+		 80
+Method #6: readPersonHistory(int id, String measureType) => List 
+	 Parameters: 
+		 idPerson: 1
+		 measureType: weight
+	 Result: 
+		 80
+		 85
+		 80
+
+-------------> I create a new person:
+
+Method #4: createPerson(Person p) => idPerson
+	 Parameters: 
+		 Mario
+		 Rossi
+		 mario@rossi.com
+	 Response: 117
+Method #1: readPersonList() => List
+	 Parameters: none
+	 Response: 
+		1 Sofia
+		2 Marina
+		117 Mario
+Method #2: readPerson(Long id) => Person
+	 Parameters: 
+		 idPerson: 117
+	 Response: 117 Mario
+
+-------------> I update and read the newly created person:
+
+Method #2: readPerson(Long id) => Person
+	 Parameters: 
+		 idPerson: 117
+	 Response: 117 Mario
+Method #3: updatePerson(Person p) => Person
+	 Parameters: 
+		 idPerson: 117
+		 new name: NewName
+Method #2: readPerson(Long id) => Person
+	 Parameters: 
+		 idPerson: 117
+	 Response: 117 NewName
+
+-------------> I delete the newly created person:
+
+Method #5: deletePerson(int idPerson)
+	 Parameters: 
+		 idPerson: 117
+	 Result: 
+		 OK
+Method #1: readPersonList() => List
+	 Parameters: none
+	 Response: 
+		1 Sofia
+		2 Marina
