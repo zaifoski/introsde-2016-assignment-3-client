@@ -1,5 +1,7 @@
 package introsde.assignment.soap.client;
 
+import java.io.FileOutputStream;
+import java.io.PrintStream;
 import java.util.List;
 
 import javax.xml.datatype.DatatypeConfigurationException;
@@ -15,6 +17,14 @@ public class PeopleClient{
 
     static PeopleService service = new PeopleService();
     static People people = service.getPeopleImplPort();
+    
+	public static void setLogFile(Boolean append){
+		try {
+		    System.setOut(new PrintStream(new FileOutputStream("logfile.log",append)));
+		} catch (Exception e) {
+		     e.printStackTrace();
+		}
+	}
     
 	/*
 	 *  Method #1: readPersonList() => List | should list 
@@ -45,7 +55,6 @@ public class PeopleClient{
 	 */
 	public static Person readPerson(int idPerson){
 		Person p = people.readPerson(idPerson);
-		//System.out.println("Result ==> "+p);
 		String result = "Method #2: readPerson(Long id) => Person";
 		result += "\n\t Parameters: "+  "\n\t\t idPerson: " + idPerson;
 		result += "\n\t Response: " + p.getIdPerson() + " " + p.getName();
@@ -76,13 +85,13 @@ public class PeopleClient{
      * with its assigned id (if a health profile is included, 
      * create also those measurements for the new Person).
      */
-	public static int createPerson() throws DatatypeConfigurationException{
-        String result = "Method #4: createPerson(Person p) => Person";
+	public static int createPerson(){
+        String result = "Method #4: createPerson(Person p) => idPerson";
         result += "\n\t Parameters: ";
 		Person newPerson = new Person();
-		newPerson.setName("Sofia");
-		newPerson.setLastname("Chimirri");
-		newPerson.setEmail("sofia@chimirri.com");
+		newPerson.setName("Mario");
+		newPerson.setLastname("Rossi");
+		newPerson.setEmail("mario@rossi.com");
         result += "\n\t\t "+ newPerson.getName();
         result += "\n\t\t "+ newPerson.getLastname();
         result += "\n\t\t "+ newPerson.getEmail();
@@ -218,33 +227,33 @@ public class PeopleClient{
 	
     public static void main(String[] args) throws Exception {
     	
-    	people.cleanDb();
+    	setLogFile(false);System.out.println("\nhttps://chimirri-assignment-3-server.herokuapp.com:6907/ws/people?wsdl/\n");people.cleanDb();
+
+        System.out.println("\n-------------> At the beginning:\n");
+        System.out.println(readPersonList());
     	readPersonMeasure(1,"weight",2);
-    	//Long newMeasureId = savePersonMeasure(1);
-    	updatePersonHP(1,new Long(2));//newMeasureId);
     	readMeasureTypes();
-    	readPersonHistory(1,"weight");
-    	/*
-        System.out.println(readPersonList());
-        int created = createPerson();
-        System.out.println(readPerson(created));
-        System.out.println(readPersonList());
-        updatePerson(created);
-        System.out.println("\n-------------> After I update the person:\n");
-        System.out.println(readPersonList());
-        */
-    	/*
-        List<String> personHistory = readPersonHistory(1,"weight");
-        for(String el: personHistory){
-        	System.out.println(el);
-        }
-        */
         
-        //updatePersonHP(created,new Measure());
-        /*
-        System.out.println(deletePerson(created));
-        System.out.println("\n-------------> After I delete the person:\n");
+        System.out.println("\n-------------> I update a measure:\n");
+    	updatePersonHP(1,new Long(2));
+
+        System.out.println("\n-------------> I save a new measure and read it:\n");
+    	Long newMeasureId = savePersonMeasure(1);
+    	readPersonMeasure(1,"weight",(int) (long) newMeasureId);
+        readPersonHistory(1,"weight");
+    	
+        System.out.println("\n-------------> I create a new person:\n");
+    	int newPerson = createPerson();
         System.out.println(readPersonList());
-        */
+        readPerson(newPerson);
+        
+        System.out.println("\n-------------> I update and read the newly created person:\n");
+    	System.out.println(updatePerson(newPerson));
+        readPerson(newPerson);
+
+        System.out.println("\n-------------> I delete the newly created person:\n");
+    	deletePerson(newPerson);
+        System.out.println(readPersonList());
+    	
     }
 }
