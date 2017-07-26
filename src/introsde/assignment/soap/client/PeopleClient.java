@@ -205,19 +205,20 @@ public class PeopleClient{
 		String result = "Method #10: updatePersonMeasure(Long id, Measure m) => Measure";
 		result += "\n\t Parameters: ";
 		result += "\n\t\t idPerson: " + id;
-		result += "\n\t\t newMeasure: " + m;
+		result += "\n\t\t measureId: " + m.getMid();
 		result += "\n\t Result: ";
 		Long measureId = people.updatePersonHealthProfile(id, m);
         if (measureId<0)
         	result+="\n\t\t"+measureId+" ERROR, the value isn't changed ";
         else
-        	result+="\n\t\t OK, the value is changed for " + measureId;
+        	result+="\n\t\t OK, the value is changed for mid " + measureId;
         System.out.println(result);
         return measureId;
 	}
 	
     public static void main(String[] args) throws Exception {
     	
+    	people.cleanDb();
     	readPersonMeasure(1,"weight",2);
     	//Long newMeasureId = savePersonMeasure(1);
     	updatePersonHP(1,new Long(2));//newMeasureId);
