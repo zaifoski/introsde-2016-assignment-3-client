@@ -7,12 +7,12 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Classe Java per updatePersonHealthProfile complex type.
+ * <p>Classe Java per savePersonMeasure complex type.
  * 
  * <p>Il seguente frammento di schema specifica il contenuto previsto contenuto in questa classe.
  * 
  * <pre>
- * &lt;complexType name="updatePersonHealthProfile">
+ * &lt;complexType name="savePersonMeasure">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
@@ -27,11 +27,11 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "updatePersonHealthProfile", propOrder = {
+@XmlType(name = "savePersonMeasure", propOrder = {
     "arg0",
     "arg1"
 })
-public class UpdatePersonHealthProfile {
+public class SavePersonMeasure {
 
     protected int arg0;
     protected Measure arg1;

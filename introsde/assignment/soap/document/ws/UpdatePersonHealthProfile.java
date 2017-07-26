@@ -16,8 +16,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="arg0" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *         &lt;element name="arg1" type="{http://ws.document.soap.assignment.introsde/}measure" minOccurs="0"/>
+ *         &lt;element name="personId" type="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         &lt;element name="healthProfile" type="{http://ws.document.soap.assignment.introsde/}lifeStatus" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -28,52 +28,52 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "updatePersonHealthProfile", propOrder = {
-    "arg0",
-    "arg1"
+    "personId",
+    "healthProfile"
 })
 public class UpdatePersonHealthProfile {
 
-    protected int arg0;
-    protected Measure arg1;
+    protected int personId;
+    protected LifeStatus healthProfile;
 
     /**
-     * Recupera il valore della proprietà arg0.
+     * Recupera il valore della proprietà personId.
      * 
      */
-    public int getArg0() {
-        return arg0;
+    public int getPersonId() {
+        return personId;
     }
 
     /**
-     * Imposta il valore della proprietà arg0.
+     * Imposta il valore della proprietà personId.
      * 
      */
-    public void setArg0(int value) {
-        this.arg0 = value;
+    public void setPersonId(int value) {
+        this.personId = value;
     }
 
     /**
-     * Recupera il valore della proprietà arg1.
+     * Recupera il valore della proprietà healthProfile.
      * 
      * @return
      *     possible object is
-     *     {@link Measure }
+     *     {@link LifeStatus }
      *     
      */
-    public Measure getArg1() {
-        return arg1;
+    public LifeStatus getHealthProfile() {
+        return healthProfile;
     }
 
     /**
-     * Imposta il valore della proprietà arg1.
+     * Imposta il valore della proprietà healthProfile.
      * 
      * @param value
      *     allowed object is
-     *     {@link Measure }
+     *     {@link LifeStatus }
      *     
      */
-    public void setArg1(Measure value) {
-        this.arg1 = value;
+    public void setHealthProfile(LifeStatus value) {
+        this.healthProfile = value;
     }
 
 }

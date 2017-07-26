@@ -8,16 +8,16 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Classe Java per updatePerson complex type.
+ * <p>Classe Java per createPerson complex type.
  * 
  * <p>Il seguente frammento di schema specifica il contenuto previsto contenuto in questa classe.
  * 
  * <pre>
- * &lt;complexType name="updatePerson">
+ * &lt;complexType name="createPerson">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="person" type="{http://ws.document.soap.assignment.introsde/}person" minOccurs="0" form="qualified"/>
+ *         &lt;element ref="{http://ws.document.soap.assignment.introsde/}person" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -27,10 +27,10 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "updatePerson", propOrder = {
+@XmlType(name = "createPerson", propOrder = {
     "person"
 })
-public class UpdatePerson {
+public class CreatePerson {
 
     @XmlElement(namespace = "http://ws.document.soap.assignment.introsde/")
     protected Person person;

@@ -16,7 +16,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="hpId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
+ *         &lt;element name="hpId" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -31,29 +31,21 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class UpdatePersonHealthProfileResponse {
 
-    protected Long hpId;
+    protected int hpId;
 
     /**
      * Recupera il valore della proprietà hpId.
      * 
-     * @return
-     *     possible object is
-     *     {@link Long }
-     *     
      */
-    public Long getHpId() {
+    public int getHpId() {
         return hpId;
     }
 
     /**
      * Imposta il valore della proprietà hpId.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Long }
-     *     
      */
-    public void setHpId(Long value) {
+    public void setHpId(int value) {
         this.hpId = value;
     }
 

@@ -25,8 +25,19 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;element name="email" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="idPerson" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *         &lt;element name="lastname" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="measures" type="{http://ws.document.soap.assignment.introsde/}measure" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="Measurements" minOccurs="0">
+ *           &lt;complexType>
+ *             &lt;complexContent>
+ *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *                 &lt;sequence>
+ *                   &lt;element name="lifeStatus" type="{http://ws.document.soap.assignment.introsde/}lifeStatus" maxOccurs="unbounded" minOccurs="0"/>
+ *                 &lt;/sequence>
+ *               &lt;/restriction>
+ *             &lt;/complexContent>
+ *           &lt;/complexType>
+ *         &lt;/element>
  *         &lt;element name="name" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="username" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -41,8 +52,9 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "email",
     "idPerson",
     "lastname",
-    "measures",
-    "name"
+    "measurements",
+    "name",
+    "username"
 })
 public class Person {
 
@@ -51,9 +63,10 @@ public class Person {
     protected String email;
     protected int idPerson;
     protected String lastname;
-    @XmlElement(nillable = true)
-    protected List<Measure> measures;
+    @XmlElement(name = "Measurements")
+    protected Person.Measurements measurements;
     protected String name;
+    protected String username;
 
     /**
      * Recupera il valore della proprietà birthdate.
@@ -144,32 +157,27 @@ public class Person {
     }
 
     /**
-     * Gets the value of the measures property.
+     * Recupera il valore della proprietà measurements.
      * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the measures property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getMeasures().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link Measure }
-     * 
-     * 
+     * @return
+     *     possible object is
+     *     {@link Person.Measurements }
+     *     
      */
-    public List<Measure> getMeasures() {
-        if (measures == null) {
-            measures = new ArrayList<Measure>();
-        }
-        return this.measures;
+    public Person.Measurements getMeasurements() {
+        return measurements;
+    }
+
+    /**
+     * Imposta il valore della proprietà measurements.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Person.Measurements }
+     *     
+     */
+    public void setMeasurements(Person.Measurements value) {
+        this.measurements = value;
     }
 
     /**
@@ -194,6 +202,90 @@ public class Person {
      */
     public void setName(String value) {
         this.name = value;
+    }
+
+    /**
+     * Recupera il valore della proprietà username.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getUsername() {
+        return username;
+    }
+
+    /**
+     * Imposta il valore della proprietà username.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setUsername(String value) {
+        this.username = value;
+    }
+
+
+    /**
+     * <p>Classe Java per anonymous complex type.
+     * 
+     * <p>Il seguente frammento di schema specifica il contenuto previsto contenuto in questa classe.
+     * 
+     * <pre>
+     * &lt;complexType>
+     *   &lt;complexContent>
+     *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+     *       &lt;sequence>
+     *         &lt;element name="lifeStatus" type="{http://ws.document.soap.assignment.introsde/}lifeStatus" maxOccurs="unbounded" minOccurs="0"/>
+     *       &lt;/sequence>
+     *     &lt;/restriction>
+     *   &lt;/complexContent>
+     * &lt;/complexType>
+     * </pre>
+     * 
+     * 
+     */
+    @XmlAccessorType(XmlAccessType.FIELD)
+    @XmlType(name = "", propOrder = {
+        "lifeStatus"
+    })
+    public static class Measurements {
+
+        @XmlElement(nillable = true)
+        protected List<LifeStatus> lifeStatus;
+
+        /**
+         * Gets the value of the lifeStatus property.
+         * 
+         * <p>
+         * This accessor method returns a reference to the live list,
+         * not a snapshot. Therefore any modification you make to the
+         * returned list will be present inside the JAXB object.
+         * This is why there is not a <CODE>set</CODE> method for the lifeStatus property.
+         * 
+         * <p>
+         * For example, to add a new item, do as follows:
+         * <pre>
+         *    getLifeStatus().add(newItem);
+         * </pre>
+         * 
+         * 
+         * <p>
+         * Objects of the following type(s) are allowed in the list
+         * {@link LifeStatus }
+         * 
+         * 
+         */
+        public List<LifeStatus> getLifeStatus() {
+            if (lifeStatus == null) {
+                lifeStatus = new ArrayList<LifeStatus>();
+            }
+            return this.lifeStatus;
+        }
+
     }
 
 }

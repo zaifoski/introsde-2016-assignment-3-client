@@ -7,17 +7,18 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Classe Java per updatePersonHealthProfile complex type.
+ * <p>Classe Java per readPersonMeasure complex type.
  * 
  * <p>Il seguente frammento di schema specifica il contenuto previsto contenuto in questa classe.
  * 
  * <pre>
- * &lt;complexType name="updatePersonHealthProfile">
+ * &lt;complexType name="readPersonMeasure">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
  *         &lt;element name="arg0" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *         &lt;element name="arg1" type="{http://ws.document.soap.assignment.introsde/}measure" minOccurs="0"/>
+ *         &lt;element name="arg1" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="arg2" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -27,14 +28,16 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "updatePersonHealthProfile", propOrder = {
+@XmlType(name = "readPersonMeasure", propOrder = {
     "arg0",
-    "arg1"
+    "arg1",
+    "arg2"
 })
-public class UpdatePersonHealthProfile {
+public class ReadPersonMeasure {
 
     protected int arg0;
-    protected Measure arg1;
+    protected String arg1;
+    protected int arg2;
 
     /**
      * Recupera il valore della proprietà arg0.
@@ -57,10 +60,10 @@ public class UpdatePersonHealthProfile {
      * 
      * @return
      *     possible object is
-     *     {@link Measure }
+     *     {@link String }
      *     
      */
-    public Measure getArg1() {
+    public String getArg1() {
         return arg1;
     }
 
@@ -69,11 +72,27 @@ public class UpdatePersonHealthProfile {
      * 
      * @param value
      *     allowed object is
-     *     {@link Measure }
+     *     {@link String }
      *     
      */
-    public void setArg1(Measure value) {
+    public void setArg1(String value) {
         this.arg1 = value;
+    }
+
+    /**
+     * Recupera il valore della proprietà arg2.
+     * 
+     */
+    public int getArg2() {
+        return arg2;
+    }
+
+    /**
+     * Imposta il valore della proprietà arg2.
+     * 
+     */
+    public void setArg2(int value) {
+        this.arg2 = value;
     }
 
 }
